@@ -1,0 +1,13 @@
+﻿@model EditCommitViewModel
+
+<h3 class="text-center">Yorumu Güncelle</h3>
+
+<form method="post" asp-controller="Product" asp-action="EditCommit">
+    <div>
+        <label class="fw-bold m-2">Yorum</label>
+        <textarea asp-for="Content" rows="5" style="resize:none" class="form-control"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-warning mt-4 fw-bold float-end" asp-route-productId="@Model.ProductId">Yorum Gönder</button>
+
+</form>

@@ -1,0 +1,187 @@
+﻿@using BookShop.WebUI.Extensions;
+<html>
+<head>
+
+	<title>Si&Si</title>
+
+	<meta name="description" content="Kitap satış sayfası">
+	<meta name="keywords" content="HTML, CSS, JavaScript, .Net, MVC">
+	<meta name="author" content="Sibel KARABULUT">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<style>
+
+		label.required:after {
+			content: "*\00a0";
+			color: red;
+			margin-left: 2px;
+		}
+		.sinan{
+			background-color: #FF8551;
+			color: #FAF0E4
+		}
+		.sinan:hover{
+				background-color: #FF8551;
+				color:darkred;
+		}
+
+	</style>
+
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+	<header class="p-3" style="background-color:#9BCDD2">
+	@*	<div class="container">
+			<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+				<a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none fw-bold">
+					Si&Si
+				</a>
+
+				<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"></ul>
+
+				<div class="d-none" id="login">
+					<partial name="_LoginPartial" model="new LoginViewModel()">
+				</div>
+
+
+				@if (!User.IsLogged())
+				{
+					<div id="welcome">
+						<partial name="_WelcomePartial">
+					</div>
+				}
+				else
+				{
+					var firstName = User.GetUserFirstName();
+					var lastName = User.GetUserLastName();
+					<div class="d-flex">
+
+						<div class="mt-2">
+							Hoş Geldin @firstName @lastName
+						</div>
+
+						@if (User.IsAdmin())
+						{
+							<div class="ms-3 me-3">
+								<a asp-area="Admin" asp-controller="Dashboard" asp-action="Index" class="btn btn-danger">Yönetim Paneli</a>
+							</div>
+						}
+
+						<a asp-controller="Auth" asp-action="Logout" class="btn btn-outline-warning ms-3">Çıkış Yap</a>
+
+					</div>
+				}
+
+			</div>
+
+		</div>*@
+
+		<nav class="navbar navbar-expand-custom navbar-mainbg">
+			<a class="navbar-brand navbar-logo" href="/">Si&Si</a>
+			<button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<i class="fas fa-bars text-white"></i>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav ml-auto">
+					<div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+					<li class="nav-item">
+						<a class="nav-link" href="javascript:void(0);"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="javascript:void(0);"><i class="far fa-address-book"></i>Address Book</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="javascript:void(0);"><i class="fa-solid fa-house"></i>Ana Sayfa</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="javascript:void(0);"><i class="far fa-calendar-alt"></i>Calendar</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="javascript:void(0);"><i class="fa-solid fa-cart-shopping"></i>Sepetim</a>
+					</li>
+
+				</ul>
+
+
+				
+
+			</div>
+			
+			<div>
+
+
+				<div class="d-none" id="login">
+					<partial name="_LoginPartial" model="new LoginViewModel()">
+				</div>
+
+				@if (!User.IsLogged())
+				{
+					<div id="welcome">
+						<partial name="_WelcomePartial">
+					</div>
+				}
+				else
+				{
+					var firstName = User.GetUserFirstName();
+					var lastName = User.GetUserLastName();
+					<div class="d-flex">
+
+						<div class="mt-2 fw-bold me-3" style="color:#4F709C; border-style:double; border-radius:10px; padding:5px">
+							Hoş Geldin @firstName @lastName
+						</div>
+
+						@if (User.IsAdmin())
+						{
+							<div class="ms-3 me-3">
+								<a asp-area="Admin" asp-controller="Dashboard" asp-action="Index" class="btn btn-danger mt-2">Yönetim Paneli</a>
+							</div>
+						}
+
+						<a asp-controller="Auth" asp-action="Logout" class="btn ms-2 mt-2 sinan">Çıkış Yap</a>
+
+					</div>
+				}
+			</div>
+		</nav>
+	</header>
+
+	<div class="container">
+		@RenderBody()
+	</div>
+
+
+
+	<footer class="text-white text-center fw-bold py-4 mt-auto" style="background-color:#9BCDD2">
+
+		<p class="text-secondary" style="color:#FAF0E4">Tüm Hakları Sibel Karabulut'a aittir.</p>
+
+	</footer>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+
+
+	<script>
+		$('#btnGirisYap').click(function () {
+			$('#login').removeClass('d-none')
+			$('#welcome').addClass('d-none')
+		})
+
+		$('#btnIptal').click(function () {
+			$('#login').addClass('d-none')
+			$('#welcome').removeClass('d-none')
+		})
+	</script>
+
+
+</body>
+
+</html>
